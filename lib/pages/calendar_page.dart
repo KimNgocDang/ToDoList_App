@@ -23,7 +23,7 @@ class _CalendarPageState extends State<CalendarPage> {
   }
 
   Future<void> _loadTasks() async {
-    final snapshot = await FirebaseFirestore.instance
+    final snapshot = await FirebaseFirestore.instance //Tải dữ liệu từ Firestore để lấy toàn bộ task của người dùng
         .collection('users')
         .doc(widget.userId)
         .collection('tasks')
@@ -106,7 +106,7 @@ class _CalendarPageState extends State<CalendarPage> {
                     focusedDay: _focusedDay,
                     selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
                     eventLoader: _getTasksForDay,
-                    onDaySelected: (selected, focused) {
+                    onDaySelected: (selected, focused) { //Xử lý task khi chọn ngày
                       setState(() {
                         _selectedDay = selected;
                         _focusedDay = focused;
